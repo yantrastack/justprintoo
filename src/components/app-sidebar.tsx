@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Home, Package, Truck, Palette, User, Zap } from "lucide-react";
-import sbLogo from "@/assets/brand/sb-logo.png.asset.json";
+import sbLogo from "@/assets/brand/sb-logo.jpg";
 import {
   Sidebar,
   SidebarContent,
@@ -32,7 +32,7 @@ export function AppSidebar() {
       <SidebarHeader className="border-b border-sidebar-border/60 py-4">
         <Link to="/" className="flex items-center gap-2 px-2">
           <div className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl bg-white shadow-teal">
-            <img src={sbLogo.url} alt="JustPrint SB logo" className="h-full w-full object-contain p-0.5" />
+            <img src={sbLogo} alt="JustPrint SB logo" className="h-full w-full object-contain p-0.5" />
           </div>
           <div className="min-w-0 group-data-[collapsible=icon]:hidden">
             <div className="font-display text-lg font-semibold tracking-tight text-sidebar-foreground">JustPrint</div>

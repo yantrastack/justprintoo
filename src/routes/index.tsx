@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import officeImg from "@/assets/brand/office.png.asset.json";
 import founderImg from "@/assets/team/founder.jpg.asset.json";
 import ceoImg from "@/assets/team/ceo.png.asset.json";
-import sbLogo from "@/assets/brand/sb-logo.png.asset.json";
+import sbLogo from "@/assets/brand/sb-logo.jpg";
 import { UrgentRequestBar } from "@/components/urgent-request";
 import { InquiryForm } from "@/components/inquiry-form";
 
@@ -32,7 +32,7 @@ function Home() {
           <div className="min-w-0 text-primary-foreground">
             <div className="inline-flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-3 py-2 backdrop-blur">
               <div className="grid h-10 w-10 place-items-center overflow-hidden rounded-xl bg-white shadow-teal">
-                <img src={sbLogo.url} alt="SB logo" className="h-full w-full object-contain p-0.5" />
+                <img src={sbLogo} alt="SB logo" className="h-full w-full object-contain p-0.5" />
               </div>
               <div className="leading-tight">
                 <div className="font-display text-xl font-semibold tracking-tight text-gold sm:text-2xl">JustPrint</div>

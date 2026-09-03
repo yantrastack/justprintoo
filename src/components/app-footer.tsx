@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import sbLogo from "@/assets/brand/sb-logo.png.asset.json";
+import sbLogo from "@/assets/brand/sb-logo.jpg";
 
 export function AppFooter() {
   return (
@@ -9,7 +9,7 @@ export function AppFooter() {
         <div>
           <div className="flex items-center gap-2">
             <div className="grid h-10 w-10 place-items-center overflow-hidden rounded-xl bg-white">
-              <img src={sbLogo.url} alt="JustPrint SB logo" className="h-full w-full object-contain p-0.5" />
+              <img src={sbLogo} alt="JustPrint SB logo" className="h-full w-full object-contain p-0.5" />
             </div>
             <div className="font-display text-lg font-semibold">JustPrint.com</div>
           </div>
