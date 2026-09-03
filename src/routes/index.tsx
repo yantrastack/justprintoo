@@ -2,11 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles, Truck, ShieldCheck, Clock } from "lucide-react";
 import { PRODUCTS, CATEGORIES, formatINR } from "@/lib/products";
 import { Button } from "@/components/ui/button";
-import officeImg from "@/assets/brand/office.png.asset.json";
 import founderImg from "@/assets/team/founder.jpg.asset.json";
 import ceoImg from "@/assets/team/ceo.png.asset.json";
 import sbLogo from "@/assets/brand/sb-logo.jpg";
 import { UrgentRequestBar } from "@/components/urgent-request";
+import { PressCarousel } from "@/components/press-carousel";
 import { InquiryForm } from "@/components/inquiry-form";
 
 export const Route = createFileRoute("/")({
@@ -71,19 +71,7 @@ function Home() {
           </div>
 
           <div className="relative min-w-0">
-            <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/10 shadow-elegant backdrop-blur-xl">
-              <img
-                src={officeImg.url}
-                alt="JustPrint press and storefront in Warangal"
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 to-transparent p-5">
-                <div className="text-xs uppercase tracking-widest text-teal">Our press &amp; storefront</div>
-                <div className="mt-1 font-display text-xl font-semibold text-white">Hunter Road, Hanamkonda · Warangal</div>
-                <div className="text-xs text-white/70">DTG t-shirts, offset press, hospital file binding — all under one roof.</div>
-              </div>
-            </div>
+            <PressCarousel />
             <div className="mt-4">
               <UrgentRequestBar />
             </div>
