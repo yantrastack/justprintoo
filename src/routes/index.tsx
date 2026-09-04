@@ -8,13 +8,20 @@ import sbLogo from "@/assets/brand/sb-logo.jpg";
 import { UrgentRequestBar } from "@/components/urgent-request";
 import { PressCarousel } from "@/components/press-carousel";
 import { InquiryForm } from "@/components/inquiry-form";
+import { canonical, socialMeta } from "@/lib/seo";
+
+const HOME_TITLE = "JustPrint Warangal — Printing Shop for Visiting Cards, Bill Books & T-Shirts";
+const HOME_DESCRIPTION =
+  "JustPrint is a printing press in Hanamkonda, Warangal. Order visiting cards, business cards, bill books, wedding cards, hospital files, t-shirt printing, rubber stamps, pamphlets and flyers with live pricing and same-day rush dispatch.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "JustPrint.com — Live-priced online printing press" },
-      { name: "description", content: "Design, price and order printing in minutes. Bill books, wedding cards, t-shirts and more with live tracking." },
+      { title: HOME_TITLE },
+      { name: "description", content: HOME_DESCRIPTION },
+      ...socialMeta({ title: HOME_TITLE, description: HOME_DESCRIPTION, path: "/" }),
     ],
+    links: [canonical("/")],
   }),
   component: Home,
 });

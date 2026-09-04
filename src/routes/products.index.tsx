@@ -5,18 +5,25 @@ import { PRODUCTS, CATEGORIES, formatINR, type Category } from "@/lib/products";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { canonical, socialMeta } from "@/lib/seo";
 
 const searchSchema = z.object({
   cat: z.enum(["corporate", "apparel", "life-events"]).optional(),
 });
 
+const PRODUCTS_TITLE = "All Printing Services & Products — JustPrint Warangal";
+const PRODUCTS_DESCRIPTION =
+  "Every JustPrint printing service in one place: bill books, letterheads, pamphlets and flyers, hospital and patient files, X-ray covers, rubber stamps, t-shirt and cap printing, wedding, birthday, saree-function and memorial cards, and photo frames — each with live pricing.";
+
 export const Route = createFileRoute("/products/")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Products — JustPrint.com" },
-      { name: "description", content: "Browse the full printoo catalog: corporate stationery, apparel and life-event cards." },
+      { title: PRODUCTS_TITLE },
+      { name: "description", content: PRODUCTS_DESCRIPTION },
+      ...socialMeta({ title: PRODUCTS_TITLE, description: PRODUCTS_DESCRIPTION, path: "/products" }),
     ],
+    links: [canonical("/products")],
   }),
   component: ProductsPage,
 });

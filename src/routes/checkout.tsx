@@ -11,7 +11,12 @@ import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/checkout")({
-  head: () => ({ meta: [{ title: "Checkout · JustPrint.com" }] }),
+  head: () => ({
+    meta: [
+      { title: "Checkout — JustPrint" },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
   component: CheckoutPage,
 });
 

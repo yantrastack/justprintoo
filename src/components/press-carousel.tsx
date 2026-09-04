@@ -10,6 +10,20 @@ import slide8 from "@/assets/references/rubberstamps.png";
 import slide9 from "@/assets/references/t-shirt-printing-services-2221319599-ww791lu7.jpg";
 
 const SLIDES = [slide1, slide2, slide3, slide4, slide5, slide6, slide7, slide8, slide9];
+
+// One accurate description per slide, in the same order as SLIDES.
+const SLIDE_ALTS = [
+  "Shopkeeper stamping a customer's bill from a printed duplicate bill book at a shop counter",
+  "Customer receiving a carbonless bill book receipt, with a stack of printed bill books on the counter",
+  "Doctor showing a printed hospital patient file folder with patient detail fields to a patient",
+  "Front and back of a corporate visiting card design with logo and QR code",
+  "Invoice and bill book page layout templates with itemised billing columns",
+  "Corporate business flyer and brochure cover layout designs",
+  "Stacks of printed rounded-corner business cards showing the front and back design",
+  "A range of self-inking and pre-inked rubber stamps in round and rectangular styles",
+  "Blue, white and yellow t-shirts printed with a custom front design",
+];
+
 const INTERVAL_MS = 4000;
 
 export function PressCarousel() {
@@ -35,7 +49,7 @@ export function PressCarousel() {
           <img
             key={src}
             src={src}
-            alt="JustPrint press and storefront in Warangal"
+            alt={SLIDE_ALTS[i]}
             loading={i === 0 ? "eager" : "lazy"}
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${
               i === index ? "opacity-100" : "opacity-0"

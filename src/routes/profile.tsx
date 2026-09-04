@@ -5,7 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, CreditCard, Award } from "lucide-react";
 
 export const Route = createFileRoute("/profile")({
-  head: () => ({ meta: [{ title: "Profile · JustPrint.com" }] }),
+  head: () => ({
+    meta: [
+      { title: "Profile — JustPrint" },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
   component: ProfilePage,
 });
 

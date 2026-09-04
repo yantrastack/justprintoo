@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { ORGANIZATION_JSONLD } from "../lib/seo";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AppHeader } from "@/components/app-header";
@@ -72,17 +73,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "JustPrint.com — Live-priced online printing press" },
-      { name: "description", content: "Design, price and order printing in minutes. Bill books, wedding cards, t-shirts and more with live tracking." },
-      { name: "author", content: "printoo" },
-      { property: "og:title", content: "JustPrint.com — Live-priced online printing press" },
-      { property: "og:description", content: "Design, price and order printing in minutes. Bill books, wedding cards, t-shirts and more with live tracking." },
+      { title: "JustPrint — Printing Press in Hanamkonda, Warangal" },
+      { name: "description", content: "JustPrint is a printing press in Hanamkonda, Warangal for visiting cards, bill books, wedding cards, hospital files, t-shirt printing, rubber stamps, pamphlets and flyers with live pricing." },
+      { name: "author", content: "JustPrint" },
+      { property: "og:site_name", content: "JustPrint" },
+      { property: "og:locale", content: "en_IN" },
+      { property: "og:title", content: "JustPrint — Printing Press in Hanamkonda, Warangal" },
+      { property: "og:description", content: "JustPrint is a printing press in Hanamkonda, Warangal for visiting cards, bill books, wedding cards, hospital files, t-shirt printing, rubber stamps, pamphlets and flyers with live pricing." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "JustPrint.com — Live-priced online printing press" },
-      { name: "twitter:description", content: "Design, price and order printing in minutes. Bill books, wedding cards, t-shirts and more with live tracking." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f1af34c4-67e3-4e18-bc02-828e84f545b5/id-preview-cd69ab34--7f80d56f-730d-4466-b72d-7ed365e72fe7.lovable.app-1783524764415.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f1af34c4-67e3-4e18-bc02-828e84f545b5/id-preview-cd69ab34--7f80d56f-730d-4466-b72d-7ed365e72fe7.lovable.app-1783524764415.png" },
+      { name: "twitter:title", content: "JustPrint — Printing Press in Hanamkonda, Warangal" },
+      { name: "twitter:description", content: "JustPrint is a printing press in Hanamkonda, Warangal for visiting cards, bill books, wedding cards, hospital files, t-shirt printing, rubber stamps, pamphlets and flyers with live pricing." },
+      { "script:ld+json": ORGANIZATION_JSONLD },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

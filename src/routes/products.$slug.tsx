@@ -9,15 +9,24 @@ import { cart } from "@/lib/cart-store";
 import { UploadCloud, CheckCircle2, FileText, ArrowLeft, ShieldCheck, Truck, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { canonical, socialMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/products/$slug")({
   head: ({ params }) => {
     const p = PRODUCTS.find((x) => x.slug === params.slug);
+    const title = p
+      ? `${p.name} Printing in Warangal — Live Pricing | JustPrint`
+      : "Product — JustPrint";
+    const description = p?.description ?? "Customise and price your print order.";
     return {
       meta: [
-        { title: p ? `${p.name} — Live pricing · JustPrint.com` : "Product · JustPrint.com" },
-        { name: "description", content: p?.description ?? "Customise and price your print order." },
+        { title },
+        { name: "description", content: description },
+        ...(p
+          ? socialMeta({ title, description, path: `/products/${p.slug}` })
+          : []),
       ],
+      links: [canonical(`/products/${params.slug}`)],
     };
   },
   component: CustomizerPage,

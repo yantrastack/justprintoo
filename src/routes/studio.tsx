@@ -1,9 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Palette, Sparkles, Wand2, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { canonical } from "@/lib/seo";
 
 export const Route = createFileRoute("/studio")({
-  head: () => ({ meta: [{ title: "Design Studio · JustPrint.com" }] }),
+  head: () => ({
+    meta: [
+      { title: "Design Studio — JustPrint" },
+      {
+        name: "description",
+        content:
+          "The upcoming JustPrint Design Studio: a browser-based canvas to design cards, apparel and stationery with automatic bleed, safe-area and CMYK checks.",
+      },
+    ],
+    links: [canonical("/studio")],
+  }),
   component: StudioPage,
 });
 

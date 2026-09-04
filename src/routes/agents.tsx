@@ -9,8 +9,9 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/agents")({
   head: () => ({
     meta: [
-      { title: "Special Agents Workspace — JustPrint.com" },
+      { title: "Special Agents Workspace — JustPrint" },
       { name: "description", content: "JustPrint's Special Agents workspace — designers on standby with allotment IDs, auto-routed via WhatsApp for urgent print jobs." },
+      { name: "robots", content: "noindex, follow" },
     ],
   }),
   component: AgentsPage,

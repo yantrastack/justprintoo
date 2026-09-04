@@ -5,7 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Trash2, ShoppingBag, ArrowRight, FileText, Minus, Plus } from "lucide-react";
 
 export const Route = createFileRoute("/cart")({
-  head: () => ({ meta: [{ title: "Your cart · JustPrint.com" }] }),
+  head: () => ({
+    meta: [
+      { title: "Your cart — JustPrint" },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
   component: CartPage,
 });
 

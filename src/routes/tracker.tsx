@@ -6,7 +6,12 @@ import { CheckCircle2, Circle, Clock, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/tracker")({
-  head: () => ({ meta: [{ title: "Order tracker · JustPrint.com" }] }),
+  head: () => ({
+    meta: [
+      { title: "Order tracker — JustPrint" },
+      { name: "robots", content: "noindex, follow" },
+    ],
+  }),
   component: TrackerPage,
 });
 
