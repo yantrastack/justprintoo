@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import slide1 from "@/assets/references/Gemini_Generated_Image_6xs8s06xs8s06xs8.png";
-import slide2 from "@/assets/references/Gemini_Generated_Image_fv4uogfv4uogfv4u.png";
-import slide3 from "@/assets/references/Gemini_Generated_Image_rmo5xyrmo5xyrmo5.png";
+import slide1 from "@/assets/references/Gemini_Generated_Image_6xs8s06xs8s06xs8.webp";
+import slide2 from "@/assets/references/Gemini_Generated_Image_fv4uogfv4uogfv4u.webp";
+import slide3 from "@/assets/references/Gemini_Generated_Image_rmo5xyrmo5xyrmo5.webp";
 import slide4 from "@/assets/references/corporate-business-card-design_684261-473.jpg";
 import slide5 from "@/assets/references/corporate-invoice-receipt-book-design-template-vector.jpg";
 import slide6 from "@/assets/references/poster-flyer-pamphlet-brochure-cover-layout-annual-report-vector.jpg";
