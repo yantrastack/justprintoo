@@ -7,6 +7,13 @@ import type { Product } from "./products";
 export const SITE_URL = "https://www.justprinto.com";
 export const SITE_NAME = "JustPrint";
 
+/**
+ * Branded social-share card (`public/og-image.jpg`, 1200x630). Used for both
+ * Open Graph and Twitter previews. Kept as an absolute production URL so
+ * scrapers (Facebook, LinkedIn, X, WhatsApp) always resolve it.
+ */
+export const OG_IMAGE_URL = `${SITE_URL}/og-image.jpg`;
+
 /** Absolute URL for a site-relative path (leading slash required). */
 export function absoluteUrl(path: string): string {
   return path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`;
@@ -41,8 +48,13 @@ export function socialMeta({
     { property: "og:description", content: description },
     { property: "og:url", content: absoluteUrl(path) },
     { property: "og:type", content: type },
+    { property: "og:image", content: OG_IMAGE_URL },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:image:alt", content: `${SITE_NAME} — printing press in Hanamkonda, Warangal` },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
+    { name: "twitter:image", content: OG_IMAGE_URL },
   ];
 }
 
