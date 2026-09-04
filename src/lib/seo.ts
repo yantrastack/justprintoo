@@ -2,6 +2,8 @@
 // behaviour. Route `head()` functions import from here so the production
 // domain, canonical URLs and structured data stay consistent in one place.
 
+import type { Product } from "./products";
+
 export const SITE_URL = "https://www.justprinto.com";
 export const SITE_NAME = "JustPrint";
 
@@ -81,3 +83,76 @@ export const ORGANIZATION_JSONLD = {
     },
   ],
 };
+
+/**
+ * "From" price for a product, in whole rupees.
+ *
+ * This mirrors exactly the figure already shown in the visible UI
+ * (`src/routes/index.tsx` and `src/routes/products.index.tsx`), so the
+ * structured data below never asserts a price the customer cannot see.
+ * Keep this in sync if that visible formula ever changes.
+ */
+function fromPrice(product: Product): number {
+  return Math.round(product.basePrice * Math.max(product.minQty, 50));
+}
+
+/**
+ * Product structured data for a product detail route.
+ *
+ * Uses only values already present in `src/lib/products.ts` and already
+ * rendered on the page: name, description, image and the same "from" price
+ * shown in the catalog. No rating, review or stock count is asserted — the
+ * offer is an open-ended `AggregateOffer` with a low price only. `image`
+ * is resolved against the production origin (the same path the page's
+ * `<img>` already loads).
+ */
+export function productJsonLd(product: Product) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: absoluteUrl(product.image),
+    brand: { "@type": "Brand", name: SITE_NAME },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "INR",
+      lowPrice: fromPrice(product),
+      availability: "https://schema.org/InStock",
+      url: absoluteUrl(`/products/${product.slug}`),
+      seller: { "@id": `${SITE_URL}/#organization` },
+    },
+  };
+}
+
+/**
+ * BreadcrumbList structured data mirroring the existing URL hierarchy
+ * Home → Products → <product>. No visible breadcrumb UI is added; this is
+ * JSON-LD only and uses the real route paths and product name.
+ */
+export function breadcrumbJsonLd(product: Product) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: absoluteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Products",
+        item: absoluteUrl("/products"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.name,
+        item: absoluteUrl(`/products/${product.slug}`),
+      },
+    ],
+  };
+}

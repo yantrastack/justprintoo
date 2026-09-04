@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Static sitemap — not generated at build time.
+  Update this file whenever public routes change, in particular when the
+  PRODUCTS list in src/lib/products.ts is edited (one <url> per product slug).
+  Only public, indexable pages belong here (no cart/checkout/profile/tracker/agents).
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.justprinto.com/</loc>

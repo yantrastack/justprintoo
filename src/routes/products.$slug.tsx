@@ -9,24 +9,38 @@ import { cart } from "@/lib/cart-store";
 import { UploadCloud, CheckCircle2, FileText, ArrowLeft, ShieldCheck, Truck, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import { canonical, socialMeta } from "@/lib/seo";
+import {
+  canonical,
+  socialMeta,
+  productJsonLd,
+  breadcrumbJsonLd,
+} from "@/lib/seo";
 
 export const Route = createFileRoute("/products/$slug")({
   head: ({ params }) => {
     const p = PRODUCTS.find((x) => x.slug === params.slug);
-    const title = p
-      ? `${p.name} Printing in Warangal — Live Pricing | JustPrint`
-      : "Product — JustPrint";
-    const description = p?.description ?? "Customise and price your print order.";
+    // Unknown slug: keep it out of the index instead of emitting a canonical
+    // for a page that renders "Product not found".
+    if (!p) {
+      return {
+        meta: [
+          { title: "Product — JustPrint" },
+          { name: "description", content: "Customise and price your print order." },
+          { name: "robots", content: "noindex, follow" },
+        ],
+      };
+    }
+    const title = `${p.name} Printing in Warangal — Live Pricing | JustPrint`;
+    const description = p.description;
     return {
       meta: [
         { title },
         { name: "description", content: description },
-        ...(p
-          ? socialMeta({ title, description, path: `/products/${p.slug}` })
-          : []),
+        ...socialMeta({ title, description, path: `/products/${p.slug}` }),
+        { "script:ld+json": productJsonLd(p) },
+        { "script:ld+json": breadcrumbJsonLd(p) },
       ],
-      links: [canonical(`/products/${params.slug}`)],
+      links: [canonical(`/products/${p.slug}`)],
     };
   },
   component: CustomizerPage,
